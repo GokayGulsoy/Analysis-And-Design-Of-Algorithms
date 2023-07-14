@@ -17,3 +17,5 @@
 12. Greedy Algorithms
 13. Shortest Paths
 14. Amortized Analysis and P-NP-NP Complete Problems
+
+[Click this link to go to Cormen's book (Introduction to Algorithms)](Textbooks/Introduction_to_Algorithms.pdf)
