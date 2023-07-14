@@ -16,4 +16,4 @@
 11. Dynamic Programming
 12. Greedy Algorithms
 13. Shortest Paths
-14. Amortized Analysis
+14. Amortized Analysis and P-NP-NP Complete Problems
