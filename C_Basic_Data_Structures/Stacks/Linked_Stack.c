@@ -1,0 +1,156 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+struct stack
+{
+    int data;
+    struct stack *next;
+};
+
+
+// function prototypes
+struct stack *top = NULL;
+struct stack *push(struct stack *,int);
+struct stack *display(struct stack *);
+struct stack *pop(struct stack *);
+int peek(struct stack *);
+
+
+int main(int argc,char *argv[])
+{
+
+     int val,option;
+
+     do 
+     {
+      
+      printf("\n *****MAIN MENU*****");
+      printf("\n 1.PUSH");
+      printf("\n 2.POP");
+      printf("\n 3.PEEK");
+      printf("\n 4.DISPLAY");
+      printf("\n 5.EXIT");
+      printf("\n Enter your option: ");
+      scanf("%d",&option);
+
+      switch (option)
+      {
+         
+         case 1: 
+              printf("\n Enter the number to be pushed on the stack: ");
+              scanf("%d",&val);
+              top = push(top,val);
+              break;         
+         case 2:
+              top = pop(top);
+              break;
+         case 3:
+              val = peek(top);
+              if (val != -1)
+              {
+                printf("\n The value at the top of the stack is: %d",val);
+              }        
+              
+              else
+              {
+                 printf("\n STACK IS EMPTY");    
+              }
+              break;
+
+         case 4:
+              top = display(top);
+              break;      
+      }
+      
+     } while (option != 5);
+
+     return 0;
+}
+
+// function to push an alement at the top of the stack 
+struct stack *push(struct stack *top,int val)
+{
+
+    struct stack *ptr;
+    ptr = (struct stack *)malloc(sizeof(struct stack));
+    ptr->data = val;
+    
+    if (top == NULL)
+    {
+
+        ptr->next = NULL;
+        top = ptr;
+    }
+     
+    else
+    {
+        
+        ptr->next = top;
+        top = ptr;
+    } 
+
+    return top;
+}
+
+struct stack *display(struct stack *top)
+{ 
+    
+    struct stack *ptr;
+    ptr = top;
+
+    if (top == NULL)
+    {
+        printf("\n STACK IS EMPTY");
+    }
+    
+    else
+    {
+         
+         while (ptr != NULL)
+         {
+          
+          printf("\n %d",ptr->data);
+          ptr = ptr->next;
+         }
+    }
+
+    return top; 
+}
+
+// function to pop an element from the top of the stack 
+struct stack *pop(struct stack *top)
+{
+    
+    struct stack *ptr;
+    ptr = top;
+
+    if (top == NULL)
+    {
+        printf("\n STACK UNDERFLOW");
+    }
+
+    else
+    {
+     
+     top = top->next;
+     printf("\n THe value being deleted is: %d",ptr->data);
+    }
+
+    return top;
+}
+
+// function to retrieve the top element from stack
+int peek(struct stack *top)
+{
+
+    if (top == NULL)
+    {
+        return -1;
+    }
+
+    else
+    {
+        return top->data;
+    }
+}
